@@ -3,256 +3,395 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Personal Website</title>
+    <title>Student Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/logo.png" type="image/x-icon">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">YN</div>
-            <nav id="navbar">
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#hometown">Hometown</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="menu-toggle" id="mobile-menu">
-                <i class="fas fa-bars"></i>
+    <div class="page-wrapper">
+        <nav class="navigation">
+            <div class="nav-container">
+                <div class="menu-toggle" id="menu-toggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
             </div>
-        </div>
-    </header>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Delhi</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
 
-    <main>
-        <section id="hero">
-            <div class="container">
-                <div class="profile-container">
-                    <div class="profile-image-container">
-                        <img src="images/profile-pic.jpg" alt="Your Profile Picture" class="profile-pic">
+        <main>
+            <section id="home" class="hero-section">
+                <div class="hero-content">
+                    <div class="profile-img-container">
+                        <img src="images/profile-pic.jpg" alt="Your Profile" class="profile-img">
                     </div>
-                    <div class="profile-text">
-                        <h1>Your Name</h1>
-                        <p class="tagline">Computer Science Student | Web Developer</p>
-                        <p class="hero-description">Crafting digital experiences through code</p>
-                        <div class="hero-buttons">
-                            <a href="#contact" class="btn primary-btn">Get in Touch</a>
-                            <a href="resume.pdf" class="btn secondary-btn" target="_blank">Download CV</a>
+                    <div class="hero-text">
+                        <h1 id="typing-text">Shaurya Kochar</h1>
+                        <p class="subtitle">CLD Student @ IIIT Hyderabad</p>
+                        <p class="bio">Building nothing through code and creativity</p>
+                        <div class="btn-container">
+                            <button class="btn primary" data-popup="connect">Connect</button>
+                            <a href="cv/resume.pdf" class="btn secondary" target="_blank">Resume</a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+                <div class="scroll-indicator">
+                    <div class="mouse">
+                        <div class="wheel"></div>
+                    </div>
+                    <div class="arrow">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </section>
 
-        <section id="about" class="section-padding">
-            <div class="container">
+            <section id="about" class="about-section">
                 <h2 class="section-title">About Me</h2>
-                <div class="section-content">
-                    <p>
-                        Hello! I'm <strong>Your Name</strong>, a passionate Computer Science student with a keen interest in software development and web technologies. Currently pursuing my degree in CS6.201 - Introduction to Software Systems, I am constantly exploring new technologies and frameworks to expand my knowledge.
-                    </p>
-                    <p>
-                        I enjoy solving problems and creating user-friendly applications that can make a positive impact. In my free time, I contribute to open-source projects and participate in hackathons to challenge myself and collaborate with other tech enthusiasts.
-                    </p>
+                <div class="about-grid">
+                    <div class="about-card" data-popup="personal">
+                        <div class="card-icon"><i class="fas fa-user"></i></div>
+                        <h3>Personal</h3>
+                    </div>
+                    <div class="about-card" data-popup="education">
+                        <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h3>Education</h3>
+                    </div>
+                    <div class="about-card" data-popup="interests">
+                        <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>Interests</h3>
+                    </div>
+                    <div class="about-card" data-popup="hometown">
+                        <div class="card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <h3>Hometown</h3>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="education" class="section-padding alt-section">
-            <div class="container">
-                <h2 class="section-title">Education & Achievements</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3>Bachelor of Science in Computer Science</h3>
-                            <p class="institution">Your University Name</p>
-                            <p class="date">2022 - Present</p>
-                            <p>Studying advanced programming concepts, data structures, algorithms, and software development methodologies.</p>
-                            <div class="achievements">
-                                <h4>Achievements:</h4>
-                                <ul>
-                                    <li>Dean's List (2022, 2023)</li>
-                                    <li>1st Place in University Hackathon 2023</li>
-                                    <li>Teaching Assistant for Introduction to Programming</li>
-                                </ul>
+            <section id="education" class="education-section">
+                <h2 class="section-title">Education Journey</h2>
+                <div class="education-cards">
+                    <div class="education-card">
+                        <div class="edu-logo">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="edu-details">
+                            <h3>B.Tech in CLD</h3>
+                            <h4>IIIT Hyderabad</h4>
+                            <div class="edu-info">
+                                <span class="edu-year">2024 - Present</span>
+                                <span class="edu-status">UG 1</span>
+                            </div>
+                            <div class="edu-highlights">
+                                <span>6 courses</span>
+                                <span>The Gaming Club Member</span>
                             </div>
                         </div>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3>High School Diploma</h3>
-                            <p class="institution">Your High School Name</p>
-                            <p class="date">2018 - 2022</p>
-                            <p>Focused on mathematics, computer science, and physics.</p>
-                            <div class="achievements">
-                                <h4>Achievements:</h4>
-                                <ul>
-                                    <li>Valedictorian</li>
-                                    <li>Science Fair Winner (2021)</li>
-                                    <li>Computer Club President</li>
-                                </ul>
+                    <div class="education-card">
+                        <div class="edu-logo">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="edu-details">
+                            <h3>High School</h3>
+                            <h4>Venkateshwar Global School</h4>
+                            <div class="edu-info">
+                                <span class="edu-year">2010 - 2024</span>
+                                <span class="edu-status">99% in Class 10 Boards</span>
+                            </div>
+                            <div class="edu-highlights">
+                                <span>School Topper</span>
+                                <span>French Olympiad Winner</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="skills" class="section-padding">
-            <div class="container">
+            <section id="skills" class="skills-section">
                 <h2 class="section-title">Technical Skills</h2>
                 <div class="skills-container">
-                    <div class="skill-category">
-                        <h3>Expert Level</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span>HTML/CSS</span>
-                                    <span>95%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 95%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span>JavaScript</span>
-                                    <span>90%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 90%"></div>
-                                </div>
+                    <div class="skill-card" data-percent="90">
+                        <div class="skill-info">
+                            <span class="skill-name">Python</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
                             </div>
                         </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Intermediate Level</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span>Python</span>
-                                    <span>80%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 80%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span>React.js</span>
-                                    <span>75%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 75%"></div>
-                                </div>
-                            </div>
+                        <div class="skill-icon">
+                            <i class="fab fa-python"></i>
                         </div>
                     </div>
-                    <div class="skill-category">
-                        <h3>Beginner Level</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span>Node.js</span>
-                                    <span>60%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 60%"></div>
-                                </div>
+                    <div class="skill-card" data-percent="85">
+                        <div class="skill-info">
+                            <span class="skill-name">C</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
                             </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span>SQL</span>
-                                    <span>50%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 50%"></div>
-                                </div>
+                        </div>
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-percent="80">
+                        <div class="skill-info">
+                            <span class="skill-name">C++</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
                             </div>
+                        </div>
+                        <div class="skill-icon">
+                            <i class="fas fa-file-code"></i>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-percent="70">
+                        <div class="skill-info">
+                            <span class="skill-name">MongoDB</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+                        <div class="skill-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-percent="60">
+                        <div class="skill-info">
+                            <span class="skill-name">SQL</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+                        <div class="skill-icon">
+                            <i class="fas fa-table"></i>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-percent="99">
+                        <div class="skill-info">
+                            <span class="skill-name">Prompt Engineering</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+                        <div class="skill-icon">
+                            <i class="fas fa-gamepad"></i>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="hometown" class="section-padding alt-section">
-            <div class="container">
-                <h2 class="section-title">My Hometown</h2>
-                <div class="hometown-content">
-                    <p>I was born and raised in [Your Hometown], a beautiful place known for its [distinctive features of your hometown]. Here are some pictures that showcase the beauty of my birthplace:</p>
-                    
-                    <div class="gallery">
-                        <div class="gallery-item">
-                            <img src="images/hometown-1.jpg" alt="Hometown Scene 1" class="gallery-img">
-                            <div class="caption">Beautiful sunrise at [Local Landmark]</div>
+            <section id="projects" class="projects-section">
+                <h2 class="section-title">Delhi Showcase</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="images/hometown/select-citywalk.jpg" alt="Select Citywalk">
                         </div>
-                        <div class="gallery-item">
-                            <img src="images/hometown-2.jpg" alt="Hometown Scene 2" class="gallery-img">
-                            <div class="caption">The famous [Local Attraction]</div>
+                        <div class="project-info">
+                            <h3>Select Citywalk</h3>
+                            <p>Premier shopping destination in South Delhi</p>
                         </div>
-                        <div class="gallery-item">
-                            <img src="images/hometown-3.jpg" alt="Hometown Scene 3" class="gallery-img">
-                            <div class="caption">Traditional [Local Culture Element]</div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="images/hometown/dlf-cyber-hub.jpg" alt="DLF Cyber Hub">
+                        </div>
+                        <div class="project-info">
+                            <h3>DLF Cyber Hub</h3>
+                            <p>Integrated food and entertainment destination</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="images/hometown/akshardham.jpg" alt="Akshardham Temple">
+                        </div>
+                        <div class="project-info">
+                            <h3>Akshardham Temple</h3>
+                            <p>Magnificent Hindu temple complex showcasing Indian culture</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="images/hometown/lodhi-garden.jpg" alt="Lodhi Garden">
+                        </div>
+                        <div class="project-info">
+                            <h3>Lodhi Garden</h3>
+                            <p>Historic park containing architectural works of the Lodhi dynasty</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="contact" class="section-padding">
-            <div class="container">
+            <section id="contact" class="contact-section">
                 <h2 class="section-title">Get In Touch</h2>
                 <div class="contact-container">
                     <div class="contact-info">
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <span>youremail@example.com</span>
+                            <a href="mailto:shaurya.kochar@research.iiit.ac.in">shaurya.kochar@research.iiit.ac.in</a>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>+XX XXX XXX XXXX</span>
+                            <a href="tel:+91 9311634393">+91 93116 34393</a>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Your City, Country</span>
+                            <span>Delhi, India</span>
                         </div>
                         <div class="social-links">
-                            <a href="https://github.com/yourusername" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
-                            <a href="https://linkedin.com/in/yourusername" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://twitter.com/yourusername" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="https://github.com/shaurya-kochar" target="_blank" class="social-icon">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/shaurya-kochar-12577b1a8/" target="_blank" class="social-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://x.com/KocharShaurya" target="_blank" class="social-icon">
+                                <i class="fab fa-twitter"></i>
+                            </a>
                         </div>
                     </div>
-                    <div class="contact-form">
-                        <form id="contactForm">
-                            <div class="form-group">
-                                <input type="text" id="name" name="name" placeholder="Your Name" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" id="email" name="email" placeholder="Your Email" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="subject" name="subject" placeholder="Subject" required>
-                            </div>
-                            <div class="form-group">
-                                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-                            </div>
-                            <button type="submit" class="btn primary-btn">Send Message</button>
-                        </form>
-                    </div>
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" placeholder="Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn primary">Send Message</button>
+                    </form>
                 </div>
-            </div>
-        </section>
-    </main>
+            </section>
+        </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Your Name. All Rights Reserved.</p>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">SK</div>
+                <div class="footer-links">
+                    <a href="https://github.com/shaurya-kochar" target="_blank">GitHub</a>
+                    <span class="divider">|</span>
+                    <a href="mailto:shaurya.kochar@research.iiit.ac.in">Email</a>
+                </div>
+                <p class="copyright">&copy; 2025 Shaurya Kochar. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <div class="popup-overlay" id="popup-overlay"></div>
+
+    <div class="popup" id="personal-popup">
+        <div class="popup-header">
+            <h3>About Me</h3>
+            <button class="close-popup"><i class="fas fa-times"></i></button>
         </div>
-    </footer>
+        <div class="popup-content">
+            <div class="popup-text">
+                <p>Hi, I'm a CLD student at IIIT Hyderabad with a passion for coding and problem-solving.</p>
+                <p>I love exploring new technologies and building projects that combine creativity with technical skills.</p>
+                <p>When I'm not coding, you'll find me playing Subway Surfers or exploring the vibrant city of Delhi.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="education-popup">
+        <div class="popup-header">
+            <h3>Education Details</h3>
+            <button class="close-popup"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="popup-content">
+            <div class="popup-text">
+                <h4>IIIT Hyderabad</h4>
+                <p>B.Tech in CLD (2024 - Present)</p>
+                <p>First Year Undergraduate</p>
+                <p>Relevant Coursework: Data Structures, Algorithms, Machine Learning</p>
+                
+                <h4>Delhi Public School</h4>
+                <p>High School (2020 - 2024)</p>
+                <p>Class 10 Boards: 99%</p>
+                <p>Focus: Mathematics, Computer Science, Physics</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="interests-popup">
+        <div class="popup-header">
+            <h3>My Interests</h3>
+            <button class="close-popup"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="popup-content">
+            <div class="popup-text">
+                <ul class="interest-list">
+                    <li>Web Development</li>
+                    <li>Artificial Intelligence</li>
+                    <li>Mobile App Development</li>
+                    <li>Competitive Programming</li>
+                    <li>Gaming (especially Subway Surfers)</li>
+                    <li>Photography</li>
+                    <li>Exploring Delhi's Urban Spaces</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="hometown-popup">
+        <div class="popup-header">
+            <h3>Delhi - My Hometown</h3>
+            <button class="close-popup"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="popup-content">
+            <div class="hometown-gallery">
+                <img src="images/hometown/select-citywalk.jpg" alt="Select Citywalk">
+                <img src="images/hometown/dlf-cyber-hub.jpg" alt="DLF Cyber Hub">
+                <img src="images/hometown/akshardham.jpg" alt="Akshardham Temple">
+                <img src="images/hometown/cp.jpg" alt="Connaught Place">
+                <img src="images/hometown/lodhi-garden.jpg" alt="Lodhi Garden">
+            </div>
+            <div class="popup-text">
+                <p>Delhi is a city where contemporary urban life thrives alongside rich cultural history. From modern shopping destinations to beautiful urban parks, it offers a unique blend of experiences.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="connect-popup">
+        <div class="popup-header">
+            <h3>Let's Connect</h3>
+            <button class="close-popup"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="popup-content">
+            <div class="connect-options">
+                <a href="mailto:shaurya.kochar@research.iiit.ac.in" class="connect-option">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email Me</span>
+                </a>
+                <a href="https://github.com/shaurya-kochar" target="_blank" class="connect-option">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/shaurya-kochar-12577b1a8/" target="_blank" class="connect-option">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://twitter.com/KocharShaurya" target="_blank" class="connect-option">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
