@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Analyzer | Shaurya Kochar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="text-analyzer.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <nav class="navigation">
+            <div class="nav-container">
+                <div class="menu-toggle" id="menu-toggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#education">Education</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#projects">Delhi</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="text_analyzer.html">Text Analyzer</a></li>
+            </ul>
+        </nav>
+
+        <section class="text-analyzer-section">
+            <h2 class="section-title">Text Analyzer</h2>
+            
+            <div class="text-input-container">
+                <textarea id="text-input" class="text-input" placeholder="Enter or paste text here (more than 10000 words recommended)" rows="10" cols="10000"></textarea>
+            </div>
+            
+            <button id="analyze-btn" class="analyze-btn">Analyze Text</button>
+            
+            <div id="results-container" class="results-container" style="display: none;">
+                <div class="result-card">
+                    <h3><i class="fas fa-font"></i> Basic Statistics</h3>
+                    <div class="basic-stats">
+                        <div class="stat-item">
+                            <div id="letter-count" class="stat-value">0</div>
+                            <div class="stat-label">Letters</div>
+                        </div>
+                        <div class="stat-item">
+                            <div id="word-count" class="stat-value">0</div>
+                            <div class="stat-label">Words</div>
+                        </div>
+                        <div class="stat-item">
+                            <div id="space-count" class="stat-value">0</div>
+                            <div class="stat-label">Spaces</div>
+                        </div>
+                        <div class="stat-item">
+                            <div id="newline-count" class="stat-value">0</div>
+                            <div class="stat-label">Newlines</div>
+                        </div>
+                        <div class="stat-item">
+                            <div id="special-count" class="stat-value">0</div>
+                            <div class="stat-label">Special Symbols</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="result-card">
+                    <h3><i class="fas fa-user"></i> Pronouns</h3>
+                    <ul id="pronouns-list" class="result-list"></ul>
+                </div>
+                
+                <div class="result-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Prepositions</h3>
+                    <ul id="prepositions-list" class="result-list"></ul>
+                </div>
+                
+                <div class="result-card">
+                    <h3><i class="fas fa-newspaper"></i> Indefinite Articles</h3>
+                    <ul id="articles-list" class="result-list"></ul>
+                </div>
+            </div>
+        </section>
+
+        <a href="index.html" class="back-home">
+            <i class="fas fa-home"></i>
+        </a>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">SK</div>
+                <div class="footer-links">
+                    <a href="https://github.com/shaurya-kochar" target="_blank">GitHub</a>
+                    <span class="divider">|</span>
+                    <a href="mailto:shaurya.kochar@research.iiit.ac.in">Email</a>
+                </div>
+                <p class="copyright">&copy; 2025 Shaurya Kochar. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="text-analyzer.js"></script>
+</body>
+</html>

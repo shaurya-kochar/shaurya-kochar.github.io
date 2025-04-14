@@ -1,4 +1,6 @@
+// User Interaction Tracking System
 document.addEventListener('DOMContentLoaded', () => {
+    // Original script content
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
     const scrollIndicator = document.querySelector('.scroll-indicator');
@@ -13,6 +15,159 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
     const typingText = document.getElementById('typing-text');
 
+    // Tracking Configuration
+    const trackingConfig = {
+        enabled: true,
+        logToConsole: true
+    };
+
+    // Helper function to get element description
+    function getElementDescription(element) {
+        // Try to identify the element by various attributes
+        if (element.id) {
+            return `${element.tagName.toLowerCase()}#${element.id}`;
+        } else if (element.className && typeof element.className === 'string' && element.className.trim() !== '') {
+            return `${element.tagName.toLowerCase()}.${element.className.split(' ')[0]}`;
+        } else if (element.tagName === 'A') {
+            return `link: ${element.textContent.trim() || element.href}`;
+        } else if (element.tagName === 'IMG') {
+            return `image: ${element.alt || element.src.split('/').pop()}`;
+        } else if (element.tagName === 'BUTTON') {
+            return `button: ${element.textContent.trim()}`;
+        } else if (element.tagName === 'INPUT') {
+            return `input: ${element.type} (${element.id || element.name || 'unnamed'})`;
+        } else if (element.textContent && element.textContent.trim() !== '') {
+            const text = element.textContent.trim();
+            return `${element.tagName.toLowerCase()}: ${text.substring(0, 20)}${text.length > 20 ? '...' : ''}`;
+        } else {
+            return element.tagName.toLowerCase();
+        }
+    }
+
+    // Track page view on load
+    function trackPageView() {
+        if (!trackingConfig.enabled) return;
+        
+        const timestamp = new Date().toISOString();
+        const eventType = "view";
+        const eventObject = "page";
+        const url = window.location.href;
+        
+        const logMessage = `${timestamp}, ${eventType}, ${eventObject}, URL: ${url}`;
+        
+        if (trackingConfig.logToConsole) {
+            console.log(logMessage);
+        }
+    }
+
+    // Track element views using Intersection Observer
+    function setupViewTracking() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Element is now visible
+                    const timestamp = new Date().toISOString();
+                    const eventType = "view";
+                    const element = entry.target;
+                    const elementType = getElementDescription(element);
+                    
+                    const logMessage = `${timestamp}, ${eventType}, ${elementType}`;
+                    
+                    if (trackingConfig.logToConsole) {
+                        console.log(logMessage);
+                    }
+                    
+                    // Unobserve the element after tracking it once
+                    observer.unobserve(element);
+                }
+            });
+        }, {
+            threshold: 0.5 // Element is considered visible when 50% is in the viewport
+        });
+        
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Observe images
+        document.querySelectorAll('img').forEach(img => {
+            observer.observe(img);
+        });
+        
+        // Observe profile content
+        document.querySelectorAll('.hero-text p, .about-card, .education-card, .skill-card, .project-card').forEach(element => {
+            observer.observe(element);
+        });
+    }
+    function setupTextAnalyzerTracking() {
+        // Track text analyzer usage if on that page
+        const analyzeBtn = document.getElementById('analyze-btn');
+        
+        if (analyzeBtn) {
+            analyzeBtn.addEventListener('click', function() {
+                if (!trackingConfig.enabled) return;
+                
+                const timestamp = new Date().toISOString();
+                const eventType = "interaction";
+                const elementType = "text_analyzer_analyze";
+                
+                const textInput = document.getElementById('text-input');
+                const textLength = textInput.value.length;
+                
+                const logMessage = `${timestamp}, ${eventType}, ${elementType}, length:${textLength}`;
+                
+                if (trackingConfig.logToConsole) {
+                    console.log(logMessage);
+                }
+            });
+        }
+    }
+
+    // Track clicks
+    function trackClicks() {
+        document.addEventListener('click', (event) => {
+            if (!trackingConfig.enabled) return;
+            
+            const timestamp = new Date().toISOString();
+            const eventType = "click";
+            const element = event.target;
+            const elementType = getElementDescription(element);
+            
+            const logMessage = `${timestamp}, ${eventType}, ${elementType}`;
+            
+            if (trackingConfig.logToConsole) {
+                console.log(logMessage);
+            }
+        }, true); // Use capturing phase to catch all clicks
+    }
+
+    // Initialize tracking
+    function initTracking() {
+        trackPageView();
+        setupViewTracking();
+        trackClicks();
+        setupTextAnalyzerTracking();
+        
+        // Track CV download
+        const cvLink = document.querySelector('a[href="cv/resume.pdf"]');
+        if (cvLink) {
+            cvLink.addEventListener('click', function() {
+                const timestamp = new Date().toISOString();
+                console.log(`${timestamp}, click, CV download`);
+            });
+        }
+        
+        // Special tracking for form submissions
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                const timestamp = new Date().toISOString();
+                console.log(`${timestamp}, submit, contact form submitted`);
+            });
+        }
+    }
+
+    // Menu toggle event
     menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
         const bars = menuToggle.querySelectorAll('.bar');
@@ -22,7 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
             navLinks.classList.remove('active');
             const bars = menuToggle.querySelectorAll('.bar');
             bars[0].style.transform = '';
@@ -131,7 +285,6 @@ document.addEventListener('DOMContentLoaded', () => {
     popupOverlay.addEventListener('click', closePopup);
 
     contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
         
         const nameInput = document.getElementById('name');
         const emailInput = document.getElementById('email');
@@ -168,5 +321,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateActiveNavLink();
         checkVisibility();
         typeText();
+        initTracking();
     });
 });
